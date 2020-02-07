@@ -1,5 +1,5 @@
 # Student Manager
-Java program for managing a classroom of students
+Basic Java program for managing a classroom of students
 
 ## Current features
 ### Student creation

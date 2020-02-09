@@ -67,9 +67,16 @@ public class Student
         return studentId;
     }
     
-    public boolean isLivesOnCampus()
+    public String isLivesOnCampus()
     {
-        return livesOnCampus;
+        if(livesOnCampus)
+        {
+            return "Yes";
+        }
+        else
+        {
+            return "No";
+        }
     }
     
     public double getGrade()
@@ -77,9 +84,27 @@ public class Student
         return grade;
     }
     
-    public boolean isHere()
+    public String isHere()
     {
-        return here;
+        if(here)
+        {
+            return "Absent";
+        }
+        else
+        {
+            return "Here";
+        }
+    }
+    
+    public void displayInfo()
+    {
+        System.out.println("1) Student Name: " + this.getFullName());
+        System.out.println("2) Student ID: " + this.getStudentId());
+        System.out.println("3) Gender: " + this.getGender());
+        System.out.println("4) Age: " + this.getAge());
+        System.out.println("5) Grade: " + this.getGrade());
+        System.out.println("6) Lives on Campus: "  + this.isLivesOnCampus());
+        System.out.println("7) Attendance: " + this.isHere());
     }
     
     /* SETTERS */

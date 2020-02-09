@@ -16,6 +16,8 @@ public class Classroom
     /* FIELDS */    
     ArrayList<Student> students = new ArrayList<>();
     private int studentCounter = 0;
+    private Scanner input = new Scanner(System.in);
+
 
     
     /* CONSTRUCTORS */
@@ -41,20 +43,93 @@ public class Classroom
     }
     
     /* SETTERS */
-    public void addStudent(Student s)
+    public void addStudent()
     {
+        Student s = new Student();
+        System.out.println();
+        System.out.print("Enter the first and last name of the student: ");
+        s.setFirstName(input.next());
+        s.setLastName(input.next());
+
+        System.out.println();
+        System.out.print("Enter the gender of the student (m/w/n): ");
+        s.setGender(input.next().charAt(0));
+
+        System.out.println();
+        System.out.print("Enter the age of the student: ");
+        s.setAge(input.nextInt());
+
+        System.out.println();
+        System.out.print("Does the student live on campus? (y/n): ");
+        switch(input.next().charAt(0))
+        {
+            case 'y':
+            {
+                s.setLivesOnCampus(true);
+            }
+            default:
+            {
+                s.setLivesOnCampus(false);
+            }
+        }
+
+        System.out.println();
+        System.out.println(s.getFullName() + " was successfully created!");
+        System.out.println("This student's identification number is " + s.getStudentId() + " ");
+        System.out.println();
         students.add(s);
         studentCounter++;
     }
     
-    public void removeStudent(int number)
+    public void removeStudent()
     {
-        students.remove(number-1);
+        System.out.println();
+        this.displayStudents();
+
+        System.out.print("Select a student to remove: ");
+        
+        int number = input.nextInt();
+
+        System.out.println();
+        System.out.print("Are you sure you want to remove this student? (y/n): ");
+
+        switch(input.next().charAt(0))
+        {
+            case 'y':
+            {
+                System.out.println();
+                students.remove(number-1);
+                System.out.println("Student removed successfully!");
+                break;
+            }
+            default:
+            {
+                System.out.println();
+                System.out.println("Student removal was cancelled.");
+                break;
+            }
+        }
         studentCounter--;
     }
     
-    public void modifyStudent(Student s, int number)
+    public void updateStudent(Student s, int number)
     {
        students.set(number-1, s);
+    }
+    
+    /* OTHER METHODS */
+    
+    public void displayStudents()
+    {
+        for(int x=0; x<this.getClassSize(); x++)
+        {
+            if(this.getStudentList().isEmpty())
+            {
+                System.out.println("There aren't any students in this class!");
+                break;
+            }
+            
+            System.out.println((x+1) + ") " + this.getStudent(x).getFullName() + " (" + this.getStudent(x).isHere() + ")");
+        }
     }
 }

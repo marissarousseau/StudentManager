@@ -52,9 +52,20 @@ public class Student
         return firstName + " " + lastName;
     }
     
-    public char getGender()
+    public String getGender()
     {
-        return gender;
+        if(gender == 'm')
+        {
+            return "man";
+        }
+        else if(gender == 'w')
+        {
+            return "woman";
+        }
+        else
+        {
+            return "non-binary";
+        }
     }
     
     public int getAge()
@@ -88,11 +99,11 @@ public class Student
     {
         if(here)
         {
-            return "Absent";
+            return "Present";
         }
         else
         {
-            return "Here";
+            return "Absent";
         }
     }
     
@@ -149,6 +160,11 @@ public class Student
     public void setHere(boolean here)
     {
         this.here = here;
+    }
+    
+    public void resetStudentId()
+    {
+        this.studentId = 100000 + rng.nextInt(90000000);
     }
     
 }

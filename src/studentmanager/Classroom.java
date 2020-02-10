@@ -6,6 +6,7 @@
 package studentmanager;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -63,10 +64,12 @@ public class Classroom
         System.out.print("Does the student live on campus? (y/n): ");
         switch(input.next().charAt(0))
         {
+            /* the student livess on campus */
             case 'y':
             {
                 s.setLivesOnCampus(true);
             }
+            /* the user does not live on campus */
             default:
             {
                 s.setLivesOnCampus(false);
@@ -95,6 +98,7 @@ public class Classroom
 
         switch(input.next().charAt(0))
         {
+            /* remove the student from the class */
             case 'y':
             {
                 System.out.println();
@@ -102,6 +106,7 @@ public class Classroom
                 System.out.println("Student removed successfully!");
                 break;
             }
+            /* cancel student removal if any other input is entered */
             default:
             {
                 System.out.println();
@@ -114,6 +119,7 @@ public class Classroom
     
     public void updateStudent(Student s, int number)
     {
+        /* update the student with their most recent personal information */
        students.set(number-1, s);
     }
     
@@ -121,14 +127,16 @@ public class Classroom
     
     public void displayStudents()
     {
+        /* display all students in the classroom in numerical order */
         for(int x=0; x<this.getClassSize(); x++)
         {
+            /* cancel print-out if there aren't any students in the classroom */
             if(this.getStudentList().isEmpty())
             {
                 System.out.println("There aren't any students in this class!");
                 break;
             }
-            
+            /* print out the student's full name and whether or not they are absent/present */
             System.out.println((x+1) + ") " + this.getStudent(x).getFullName() + " (" + this.getStudent(x).isHere() + ")");
         }
     }

@@ -6,7 +6,6 @@
 package studentmanager;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  *
@@ -33,7 +32,7 @@ public class StudentManager
             System.out.println();
          
             System.out.println("1) Student management");
-            System.out.println("2) Attendance");
+            System.out.println("2) Attendance log");
             System.out.println("3) Gradebook");
             System.out.print("Select an option: ");
 
@@ -128,6 +127,7 @@ public class StudentManager
         {
             case 'y':
             {
+                /* mark student as here */
                 s.setHere(true);
                 System.out.println();
                 System.out.println(s.getFullName() + " was marked here.");
@@ -135,6 +135,7 @@ public class StudentManager
             }
             default:
             {
+                /* mark student as absent */
                 s.setHere(false);
                 System.out.println();
                 System.out.println(s.getFullName() + " was marked absent.");
@@ -148,7 +149,19 @@ public class StudentManager
     
     public static void gradeBook()
     {
-        System.out.println("This is coming soon! Check back another time!");
+        System.out.println();
+        System.out.println("GRADEBOOK");
+        System.out.println();
+        classroom.displayStudents();
+        System.out.print("Select a student to update: ");
+        int studentNum = input.nextInt();
+        Student s = classroom.getStudent(studentNum-1);
+        System.out.println(s.getFullName());
+        System.out.println("Current grade: " + s.getGrade());
+        System.out.print("Please enter the new grade: ");
+        s.setGrade(input.nextDouble());
+        classroom.updateStudent(s,studentNum);
+        System.out.println("Student grade updated successfully!");
     }
     
     public static boolean setProgramRunning()
@@ -162,11 +175,13 @@ public class StudentManager
 
         switch(input.nextInt())
         {
+            /* keep the program running */
             case 1:
             {
                 System.out.println();
                 return true;
             }
+            /* shut down the program */
             default:
             {
                 System.out.println();
@@ -178,11 +193,13 @@ public class StudentManager
     
     public static void invalidInput()
     {
+        /* general error message for input that is invalid */
         System.out.println("That isn't a valid option!");
     }
     
     public static void modifyStudent()
     {
+        /* Method used for student modifications, such as updating personal information */
         System.out.println();
         classroom.displayStudents();
         System.out.println();
@@ -197,12 +214,101 @@ public class StudentManager
         {
             case 1:
             {
+                /* update the given student's first and last name */
                 System.out.println();
                 System.out.print("Enter the student's first and last name: ");
                 s.setFirstName(input.next());
                 s.setLastName(input.next());
                 classroom.updateStudent(s,studentNum);
                 System.out.println("Student was updated successfully.");
+                break;
+            }
+            case 2:
+            {
+                /* create a new student ID number */
+                System.out.println();
+                System.out.println("WARNING: You are regenerating " + s.getFullName() + "\'s identification number.");
+                System.out.println();
+                System.out.print("Please type \"YES\" in all caps to confirm: ");
+                switch(input.next())
+                {
+                    case "YES":
+                    {
+                        /* confirm student id rengeneration*/
+                        System.out.println();
+                        System.out.println("Regenerating...");
+                        s.resetStudentId();
+                        classroom.updateStudent(s, studentNum);
+                        System.out.println(s.getFullName() + "\'s identification number is now " + s.getStudentId());
+                        break;
+                    }
+                    default:
+                    {
+                        /* cancel student regeneration */
+                        System.out.println();
+                        System.out.println("Student ID regeneration was cancelled!");
+                        break;
+                    }
+                }
+                break;
+            }
+            case 3:
+            {
+                /* set student's gender */
+                System.out.println();
+                System.out.print("Please enter the student's gender (m/w/n): ");
+                s.setGender(input.next().charAt(0));
+                classroom.updateStudent(s,studentNum);
+                System.out.println(s.getFullName() + "\'s gender is now set as " + s.getGender());
+                break;
+            }
+            case 4:
+            {
+                /* set student's age */
+                System.out.println();
+                System.out.print("Plase enter the student's new age: ");
+                s.setAge(input.nextInt());
+                classroom.updateStudent(s, studentNum);
+                System.out.println("Age successfully updated!");
+                break;
+            }
+            case 5:
+            {
+                /* you can't modify the student's grade from here! */
+                System.out.println();
+                System.out.print("To modify a student's grade, please visit the Gradebook!");
+                break;
+            }
+            case 6:
+            {
+                /* set whether the student lives on or off campus – eventually I want to change the logic of the isLivesOnCampus() method to return a string of either "on" or "off" */
+                System.out.println();
+                System.out.print("Does this student live on campus? (y/n): ");
+                switch(input.next().charAt(0))
+                {
+                    /* student lives on campus now */
+                    case 'y':
+                    {
+                        s.setLivesOnCampus(true);
+                        System.out.println("Student now lives on campus.");
+                        break;
+                    }
+                    default:
+                    {
+                        /* student doesnt' live on campus or input was not equal to 'y' */
+                        s.setLivesOnCampus(false);
+                        System.out.println("Student no longer lives on campus.");
+                        break;
+                    }
+                }
+                break;
+            }
+            case 7:
+            {
+                /* you can't mark attendance from here! */
+                System.out.println();
+                System.out.println("To set attendance, please visit the Attendance Log!");
+                break;
             }
         }
     }

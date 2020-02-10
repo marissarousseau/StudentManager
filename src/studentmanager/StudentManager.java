@@ -13,7 +13,15 @@ import java.util.Scanner;
  */
 public class StudentManager
 {
+
+    /**
+     *
+     */
     public static Scanner input = new Scanner(System.in);
+
+    /**
+     *
+     */
     public static Classroom classroom = new Classroom();
     
     /**
@@ -73,6 +81,9 @@ public class StudentManager
         }
     }
     
+    /**
+     *
+     */
     public static void studentManagement()
     {
         /* student management options */
@@ -112,6 +123,9 @@ public class StudentManager
         }
     }
     
+    /**
+     *
+     */
     public static void markAttendance()
     {
         classroom.displayStudents();
@@ -147,6 +161,9 @@ public class StudentManager
 
     }
     
+    /**
+     *
+     */
     public static void gradeBook()
     {
         System.out.println();
@@ -164,6 +181,10 @@ public class StudentManager
         System.out.println("Student grade updated successfully!");
     }
     
+    /**
+     *
+     * @return
+     */
     public static boolean setProgramRunning()
     {
         System.out.println();
@@ -191,12 +212,18 @@ public class StudentManager
         }
     }
     
+    /**
+     *
+     */
     public static void invalidInput()
     {
         /* general error message for input that is invalid */
         System.out.println("That isn't a valid option!");
     }
     
+    /**
+     *
+     */
     public static void modifyStudent()
     {
         /* Method used for student modifications, such as updating personal information */

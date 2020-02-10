@@ -28,6 +28,11 @@ public class Student
     
     
     /* CONSTRUCTORS */
+
+    /**
+     *Creates a Student object with randomly generated Student ID number and grade of 0.0
+     */
+
     
     public Student()
     {
@@ -36,22 +41,40 @@ public class Student
     }
     
     /* GETTERS */
+
+    /**
+     *
+     * @return Returns the current first name of a Student
+     */
+
     
     public String getFirstName()
     {
         return firstName;
     }
     
+    /**
+     *
+     * @return Returns the current last name of a Student
+     */
     public String getLastName()
     {
         return lastName;
     }
     
+    /**
+     *
+     * @return Returns the current full name of a Student
+     */
     public String getFullName()
     {
         return firstName + " " + lastName;
     }
     
+    /**
+     *
+     * @return Returns the current gender of a Student
+     */
     public String getGender()
     {
         if(gender == 'm')
@@ -68,16 +91,28 @@ public class Student
         }
     }
     
+    /**
+     *
+     * @return Returns the current age of a Student
+     */
     public int getAge()
     {
         return age;
     }
     
+    /**
+     *
+     * @return Returns the current identification number of a Student
+     */
     public int getStudentId()
     {
         return studentId;
     }
     
+    /**
+     *
+     * @return Returns the housing status of a Student
+     */
     public String isLivesOnCampus()
     {
         if(livesOnCampus)
@@ -90,11 +125,19 @@ public class Student
         }
     }
     
+    /**
+     *
+     * @return Returns the current grade of a Student
+     */
     public double getGrade()
     {
         return grade;
     }
     
+    /**
+     *
+     * @return Returns the attedance status of a Student
+     */
     public String isHere()
     {
         if(here)
@@ -107,6 +150,9 @@ public class Student
         }
     }
     
+    /**
+     *Displays a neatly ordered list of field values of a Student
+     */
     public void displayInfo()
     {
         System.out.println("1) Student Name: " + this.getFullName());
@@ -119,32 +165,58 @@ public class Student
     }
     
     /* SETTERS */
+
+    /**
+     *
+     * @param firstName The new first name of a Student
+     */
+
     
     public void setFirstName(String firstName)
     {
         this.firstName = firstName;
     }
     
+    /**
+     *
+     * @param lastName The new last name of a Student
+     */
     public void setLastName(String lastName)
     {
         this.lastName = lastName;
     }
     
+    /**
+     *
+     * @param gender The new gender of a Student
+     */
     public void setGender(char gender)
     {
         this.gender = gender;
     }
     
+    /**
+     *
+     * @param age The new age of a Student
+     */
     public void setAge(int age)
     {
         this.age = age;
     }
     
+    /**
+     *
+     * @param livesOnCampus The new housing status of a Student
+     */
     public void setLivesOnCampus(boolean livesOnCampus)
     {
         this.livesOnCampus = livesOnCampus;
     }
     
+    /**
+     *
+     * @param grade The new grade of a Student
+     */
     public void setGrade(double grade)
     {
         if(grade > 100)
@@ -157,11 +229,18 @@ public class Student
         }
     }
     
+    /**
+     *
+     * @param here The new attendance status of a Student
+     */
     public void setHere(boolean here)
     {
         this.here = here;
     }
     
+    /**
+     * Resets the Student ID number of a Student
+     */
     public void resetStudentId()
     {
         this.studentId = 100000 + rng.nextInt(90000000);

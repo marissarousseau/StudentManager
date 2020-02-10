@@ -22,28 +22,53 @@ public class Classroom
 
     
     /* CONSTRUCTORS */
+
+    /**
+     *Creates Classroom object that contains various Student objects in an organized fashion
+     */
+
     public Classroom()
     {
         
     }
     
     /* GETTERS */
+
+    /**
+     *
+     * @return Returns the classroom roster
+     */
+
     public ArrayList<Student> getStudentList()
     {
         return students;
     }
     
+    /**
+     *
+     * @param x the index of the student
+     * @return Returns the student at a given index
+     */
     public Student getStudent(int x)
     {
         return students.get(x);
     }
     
+    /**
+     *
+     * @return Returns the current size of the class list
+     */
     public int getClassSize()
     {
         return students.size();
     }
     
     /* SETTERS */
+
+    /**
+     *  Appends a student with specific attributes to the end of the classroom list
+     */
+
     public void addStudent()
     {
         Student s = new Student();
@@ -84,6 +109,9 @@ public class Classroom
         studentCounter++;
     }
     
+    /**
+     *Removes a given student from the classroom list
+     */
     public void removeStudent()
     {
         System.out.println();
@@ -117,6 +145,11 @@ public class Classroom
         studentCounter--;
     }
     
+    /**
+     *
+     * @param s A Student object used as the source for updating a Student in the classroom list
+     * @param number The index+1 of the Student object to be updated
+     */
     public void updateStudent(Student s, int number)
     {
         /* update the student with their most recent personal information */
@@ -124,6 +157,11 @@ public class Classroom
     }
     
     /* OTHER METHODS */
+
+    /**
+     *Displays a neatly ordered list of students in the classroom
+     */
+
     
     public void displayStudents()
     {
